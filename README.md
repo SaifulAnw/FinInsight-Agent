@@ -121,22 +121,34 @@ The system uses a high-precision Router to classify natural language into specif
 ```text
 fininsight-agent/
 ├── 📂 data/
-│   ├── 📂 input/           # 📥 Source: Place bank PDF statements here
-│   └── 📂 database/        # 🗄️ Persistence: Auto-generated SQLite storage
+│   └── financial_data.db       # Main SQLite Database storage
 ├── 📂 src/
-│   ├── 📂 data_pipeline/   # ⚙️ ETL Layer: PDF Extraction to SQL
-│   │   ├── parser.py       # Raw text extraction & cleaning
-│   │   ├── schema.py       # Relational DB models
-│   │   └── loader.py       # Transactional loading logic
-│   └── 📂 ai_agent/        # 🧠 Intelligence Layer: Reasoning & Tools
-│       ├── router.py       # Intent classification logic
-│       ├── metrics.py      # Deterministic aggregation tools
-│       ├── trend.py        # Time-series comparison logic
-│       ├── agent.py        # Main LLM reasoning loop
-│       └── cli.py          # Interactive user interface
-├── 📂 tests/               # ✅ Quality Assurance: Unit & Integration tests
-├── 🐳 docker-compose.yaml   # Infrastructure as Code
-└── 🐍 requirements.txt      # Dependency management
+│   ├── 📂 ai_agent/            # 🧠 Intelligence Layer (Core Logic)
+│   │   ├── 📂 data/database/   # Local database cache/copy
+│   │   │   └── financial_data.db
+│   │   ├── agent_layer.py      # LLM Agent orchestration
+│   │   ├── analysis.py         # Financial reasoning logic
+│   │   ├── cli.py              # Interactive user interface
+│   │   ├── config.py           # Environment & App configuration
+│   │   ├── legacy_llm_agent.py # Deprecated agent versions
+│   │   ├── metrics.py          # Deterministic SQL aggregation tools
+│   │   ├── router.py           # Intent classification logic
+│   │   ├── trend.py            # Time-series comparison logic
+│   │   └── utils.py            # Shared helper functions
+│   └── 📂 data_pipeline/       # ⚙️ ETL Layer (Data Processing)
+│       ├── db_schema.py        # Database models & SQLAlchemy schema
+│       ├── loader.py           # Data ingestion & loading logic
+│       └── parser.py           # PDF text extraction & cleaning
+├── .env.example                # Template for environment variables
+├── .gitignore                  # Git ignore rules
+├── Dockerfile                  # Container definition
+├── README.md                   # Project documentation
+├── app.py                      # Main application entry point
+├── docker-compose.yaml         # Multi-container orchestration
+├── entrypoint.sh               # Docker startup script
+├── requirements.txt            # Python dependency list
+├── test_db.py                  # Database integrity tests
+└── breakdown_test.ipynb        # Analysis & prototyping sandbox
 ```
 ## 🗄️ Database Schema
 
