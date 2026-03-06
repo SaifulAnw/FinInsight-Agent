@@ -76,8 +76,8 @@ This architecture ensures:
 - **Traceable Financial Computations**
 - **Auditability of all results**
 - **Production safety for financial applications**
-
 The LLM is intentionally restricted from performing arithmetic to maintain mathematical integrity.
+
 ---
 ## ✨ Key Engineering Features
 
