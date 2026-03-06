@@ -1,0 +1,17 @@
+# --- PHASE 1: Data Ingestion & ETL ---
+pandas                     # Data manipulation library
+pdfplumber                 # PDF table extraction library
+sqlalchemy                 # ORM for database connections
+cursor                     # DuckDB cursor for database operations
+requests                   # HTTP library for API requests
+websockets                 # WebSocket library for real-time communication
+
+# --- PHASE 2 & 3: AI Orchestration & Interface ---
+langchain                  # LangChain core library
+langchain-community        # Additional LangChain community components
+python-dotenv              # Load environment variables from .env file
+# huggingface-hub            # Interact with the Hugging Face API
+# langchain-huggingface      # LangChain integration for Hugging Face models
+smolagents[toolkit]       # Lightweight agents for AI orchestration
+smolagents[openai]        # Smolagents + dependency openai
+# openai                  # OpenAI API client

@@ -1,0 +1,63 @@
+services:
+  # 1. Ollama Service for running local LLMs
+  ollama:
+    image: ollama/ollama:latest
+    container_name: financial-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    networks:
+      - financial-network
+
+    # GPU access for Docker Compose
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+    mem_limit: 6g
+    shm_size: "2gb"
+
+    entrypoint: /bin/sh
+    command: >
+      -c "
+      ollama serve &
+      sleep 10 &&
+      ollama pull qwen2.5-coder:3b-instruct-q4_0 &&
+      ollama pull mistral:7b-instruct-q4_0 &&
+      ollama pull phi3:mini &&
+      wait
+      "
+
+  # 2. Service ETL/AI Agent & Database Interaction
+  etl_app:
+    build: .
+    container_name: financial-analyst-etl
+    depends_on:
+      - ollama
+    env_file: .env
+    environment:
+      - DATABASE_URL=sqlite:////app/data/database/financial_data.db
+      - OLLAMA_BASE_URL=http://ollama:11434
+    volumes:
+      - .:/app
+      - ./data:/app/data
+      - ./logs:/app/logs
+    working_dir: /app
+    command: sh entrypoint.sh
+    stdin_open: true
+    tty: true
+    networks:
+      - financial-network
+
+volumes:
+  ollama_data:
+
+networks:
+  financial-network:
+    driver: bridge
