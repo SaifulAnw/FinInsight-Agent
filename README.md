@@ -358,4 +358,5 @@ This architecture ensures that the system delivers **intelligent insights while 
 
 ---
 
-This project was built as part of a research exploration into **Hybrid LLM + Deterministic Systems Architecture for Financial Intelligence.**
+> **Research Note**  
+> This project was built as part of a research exploration into **Hybrid LLM + Deterministic Systems Architecture for Financial Intelligence.**
