@@ -18,7 +18,7 @@ Most financial AI tools fail because they let LLMs do arithmetic. LLMs are great
 
 | Traditional Approach | FinInsight-Agent Approach |
 |---------------------|--------------------------|
-| LLM reads PDF → LLM guesses numbers | PDF → SQL Engine → 100% Accurate Aggregations |
+| LLM reads PDF → LLM guesses numbers | PDF → SQL Engine → Accurate Aggregations |
 | LLM does math → Hallucinations | SQL does math → Zero calculation errors |
 | Black-box reasoning | Audit trail from query to answer |
 | Unreliable for production | Enterprise-ready with validation |
@@ -58,6 +58,7 @@ graph TB
         N --> O[Final Verified Output]
     end
 ```
+---
 ## 🧠 Architecture Philosophy
 
 FinInsight-Agent follows a **Hybrid Deterministic + LLM Architecture**.
@@ -77,16 +78,16 @@ This architecture ensures:
 - **Production safety for financial applications**
 
 The LLM is intentionally restricted from performing arithmetic to maintain mathematical integrity.
-
+---
 ## ✨ Key Engineering Features
 
-### 1. 🔒 Zero Numerical Hallucination Architecture
+#### 1. 🔒 Zero Numerical Hallucination Architecture
 Unlike standard LLM agents, this system enforces a strict separation between **Calculation** and **Reasoning**:
 * **Deterministic Execution**: 100% of arithmetic calculations are performed by the SQL engine, not the LLM.
 * **Traceable Reasoning**: Every insight is backed by a generated `sql_trace`, allowing for immediate audit and verification.
 * **Integrity**: LLM is restricted to interpreting structured results, eliminating the risk of "math hallucinations".
 
-### 2. 🎯 Smart Intent Routing & Tooling
+#### 2. 🎯 Smart Intent Routing & Tooling
 The system uses a high-precision Router to classify natural language into specific operational tools:
 * **Metrics Engine**: Handles direct aggregations (`SUM`, `AVG`, `COUNT`).
 * **Trend Engine**: Executes complex time-series comparisons (MoM, YoY) and calculates deltas.
@@ -94,7 +95,7 @@ The system uses a high-precision Router to classify natural language into specif
   > *"How much did I spend in December?"* → `Metrics Engine`
   > *"Why did my expenses drop?"* → `Trend Engine` + `LLM Reasoning`
 
-### 3. 🛡️ Production-Ready Guardrails
+#### 3. 🛡️ Production-Ready Guardrails
 * **Schema Enforcement**: All agent outputs are validated against strict JSON schemas using Pydantic.
 * **Confidence Scoring**: The agent attaches a confidence metric to every response based on data availability and intent clarity.
 * **Fallback Logic**: Robust error handling for edge cases, such as missing date ranges or ambiguous transaction descriptions.
@@ -174,7 +175,7 @@ This schema allows the system to perform deterministic financial analysis throug
 ### 1. Environment Setup
 Clone the repository and prepare your environment variables:
 ```bash
-git clone [https://github.com/SaifulAnw/FinInsight-Agent.git](https://github.com/SaifulAnw/FinInsight-Agent.git)
+git clone https://github.com/SaifulAnw/FinInsight-Agent.git
 cd FinInsight-Agent
 cp .env.example .env
 ```
