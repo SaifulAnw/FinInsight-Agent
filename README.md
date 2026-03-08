@@ -6,33 +6,13 @@
 ![Framework](https://img.shields.io/badge/Framework-smolagents-green.svg)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)
 
-![Hybrid Architecture](docs/Visual - Workflow.svg)
+![Hybrid Architecture](docs/Visual-Workflow.svg)
 
 **FinInsight-Agent** is a production-ready AI system that analyzes bank transaction statements from PDF files. It implements a **Hybrid Reasoning Architecture** to eliminate numerical hallucinations—the #1 challenge in financial AI applications.
 
 > 🔥 *"100% intelligent insights"*
 
 ---
-
-```mermaid
-flowchart TD
-
-A[User Question] --> B[Intent Router]
-
-B -->|Income/Expense Query| C[Metrics Tool]
-B -->|Trend Analysis| D[Trend Tool]
-
-C --> E[SQL Query Execution]
-D --> E
-
-E --> F[Structured Result]
-
-F --> G[LLM Explanation]
-
-G --> H[JSON Schema Validation]
-
-H --> I[Final Answer]
-```
 
 ## 🎯 The Problem It Solves
 
@@ -204,7 +184,29 @@ CREATE TABLE transactions (
 | 2024-11-03 | TARIKAN ATM 01/11 | 50000 | DB | 2145094 |
 
 This schema allows the system to perform deterministic financial analysis through SQL queries while maintaining full traceability back to the original bank statement source.
+
 ---
+
+```mermaid
+flowchart TD
+
+A[User Question] --> B[Intent Router]
+
+B -->|Income/Expense Query| C[Metrics Tool]
+B -->|Trend Analysis| D[Trend Tool]
+
+C --> E[SQL Query Execution]
+D --> E
+
+E --> F[Structured Result]
+
+F --> G[LLM Explanation]
+
+G --> H[JSON Schema Validation]
+
+H --> I[Final Answer]
+```
+
 ## 🚀 Quick Start Guide
 
 ### 1. Environment Setup
