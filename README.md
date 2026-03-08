@@ -342,7 +342,7 @@ These directions aim to evolve the system into a **full financial intelligence a
 
 ## 👨‍💻 About the Author
 
-**Saiful Anwar — AI / LLM Engineer**
+**Saiful Anwar — Backend Engineer**
 
 This project demonstrates the ability to design and implement a **safe and reliable agentic workflow for financial data analysis**.
 
