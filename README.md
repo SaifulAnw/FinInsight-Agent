@@ -184,6 +184,7 @@ CREATE TABLE transactions (
 | 2024-11-03 | TARIKAN ATM 01/11 | 50000 | DB | 2145094 |
 
 This schema allows the system to perform deterministic financial analysis through SQL queries while maintaining full traceability back to the original bank statement source.
+
 ---
 
 ```mermaid
