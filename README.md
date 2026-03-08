@@ -14,26 +14,6 @@
 
 ---
 
-```mermaid
-flowchart TD
-
-A[User Question] --> B[Intent Router]
-
-B -->|Income/Expense Query| C[Metrics Tool]
-B -->|Trend Analysis| D[Trend Tool]
-
-C --> E[SQL Query Execution]
-D --> E
-
-E --> F[Structured Result]
-
-F --> G[LLM Explanation]
-
-G --> H[JSON Schema Validation]
-
-H --> I[Final Answer]
-```
-
 ## 🎯 The Problem It Solves
 
 Most financial AI tools fail because they let LLMs do arithmetic. LLMs are great at language, terrible at math. **FinInsight-Agent** fixes this by:
@@ -205,6 +185,27 @@ CREATE TABLE transactions (
 
 This schema allows the system to perform deterministic financial analysis through SQL queries while maintaining full traceability back to the original bank statement source.
 ---
+
+```mermaid
+flowchart TD
+
+A[User Question] --> B[Intent Router]
+
+B -->|Income/Expense Query| C[Metrics Tool]
+B -->|Trend Analysis| D[Trend Tool]
+
+C --> E[SQL Query Execution]
+D --> E
+
+E --> F[Structured Result]
+
+F --> G[LLM Explanation]
+
+G --> H[JSON Schema Validation]
+
+H --> I[Final Answer]
+```
+
 ## 🚀 Quick Start Guide
 
 ### 1. Environment Setup
