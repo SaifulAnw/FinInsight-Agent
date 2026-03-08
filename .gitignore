@@ -4,6 +4,7 @@ env/
 venv/
 llm-env/           
 llm_venv/
+llm-venv/
 venv*/
 
 # Data dan Database
