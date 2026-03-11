@@ -6,10 +6,6 @@
 ![Framework](https://img.shields.io/badge/Framework-smolagents-green.svg)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)
 
-***Supporting UI***
-![ResultingOutput](docs/photo-2.png)
-![ResultingOutput](docs/photo-1.png)
-
 ![Hybrid Architecture](docs/Visual-Workflow.svg)
 
 **FinInsight-Agent** is a production-ready AI system that analyzes bank transaction statements from PDF files. It implements a **Hybrid Reasoning Architecture** to eliminate numerical hallucinations—the #1 challenge in financial AI applications.
@@ -30,6 +26,11 @@ Most financial AI tools fail because they let LLMs do arithmetic. LLMs are great
 | Unreliable for production | Enterprise-ready with validation |
 
 ---
+
+***Demo UI***
+
+![ResultingOutput](docs/photo-2.png)
+![ResultingOutput](docs/photo-1.png)
 
 ## 🏗️ System Architecture
 
