@@ -6,8 +6,8 @@
 ![Framework](https://img.shields.io/badge/Framework-smolagents-green.svg)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)
 
-![ResultingOutput](docs/photo-1.png)
 ![ResultingOutput](docs/photo-2.png)
+![ResultingOutput](docs/photo-1.png)
 
 ![Hybrid Architecture](docs/Visual-Workflow.svg)
 
