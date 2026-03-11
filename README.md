@@ -6,6 +6,9 @@
 ![Framework](https://img.shields.io/badge/Framework-smolagents-green.svg)
 ![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)
 
+![ResultingOutput](docs/photo-1.png)
+![ResultingOutput](docs/photo-2.png)
+
 ![Hybrid Architecture](docs/Visual-Workflow.svg)
 
 **FinInsight-Agent** is a production-ready AI system that analyzes bank transaction statements from PDF files. It implements a **Hybrid Reasoning Architecture** to eliminate numerical hallucinations—the #1 challenge in financial AI applications.
