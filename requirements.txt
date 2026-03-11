@@ -5,6 +5,7 @@ sqlalchemy                 # ORM for database connections
 cursor                     # DuckDB cursor for database operations
 requests                   # HTTP library for API requests
 websockets                 # WebSocket library for real-time communication
+streamlit                  # Web app framework for interactive dashboards
 
 # --- PHASE 2 & 3: AI Orchestration & Interface ---
 langchain                  # LangChain core library

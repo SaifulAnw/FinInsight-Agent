@@ -1,6 +1,7 @@
 from sqlalchemy import text
-from config import engine
-from utils import format_currency
+import pandas as pd
+from src.ai_agent.config import engine
+from src.ai_agent.utils import format_currency
 
 INCOME_CONDITIONS = """
     (
@@ -171,3 +172,66 @@ def compare_months(year1, month1, year2, month2, metric="expense"):
         "diff": diff,
         "percent": percent
     }
+    
+def get_tracked_period():
+    query = text("""
+        SELECT MIN(DATE) as start_date, MAX(DATE) as end_date
+        FROM transactions
+    """)
+
+    with engine.connect() as conn:
+        result = conn.execute(query).fetchone()
+
+    return result.start_date, result.end_date
+
+def get_trend_dataframe():
+    """
+    Return monthly expense trend as DataFrame
+    month | expense
+    """
+
+    query = text("""
+        SELECT 
+            strftime('%Y-%m', DATE) as month,
+            SUM(AMOUNT) as expense
+        FROM transactions
+        WHERE (
+            MUTATION_TYPE = 'DB'
+            OR DESCRIPTION LIKE '%TRANSAKSI DEBIT%'
+            OR DESCRIPTION LIKE '%TRSF E-BANKING%'
+        )
+        GROUP BY month
+        ORDER BY month
+    """)
+
+    with engine.connect() as conn:
+        result = conn.execute(query).fetchall()
+
+    df = pd.DataFrame(result, columns=["month", "expense"])
+
+    return df
+
+def get_latest_transactions(limit: int = 10):
+    """
+    Get latest transactions from database
+    """
+
+    query = text("""
+        SELECT 
+            DATE,
+            DESCRIPTION,
+            AMOUNT
+        FROM transactions
+        ORDER BY DATE DESC
+        LIMIT :limit
+    """)
+
+    with engine.connect() as conn:
+        result = conn.execute(query, {"limit": limit}).fetchall()
+
+    df = pd.DataFrame(
+        result,
+        columns=["date", "description", "amount"]
+    )
+
+    return df

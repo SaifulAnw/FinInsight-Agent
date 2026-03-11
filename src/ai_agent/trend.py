@@ -1,8 +1,8 @@
 # trend.py
 
 from sqlalchemy import text
-from config import engine
-from metrics import INCOME_CONDITIONS, EXPENSE_CONDITIONS
+from src.ai_agent.config import engine
+from src.ai_agent.metrics import INCOME_CONDITIONS, EXPENSE_CONDITIONS
 
 def get_trend_range(
     start_year: int,

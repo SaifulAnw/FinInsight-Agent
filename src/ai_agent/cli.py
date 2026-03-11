@@ -1,11 +1,11 @@
 # src/ai_agent/cli.py
 import json
 import re
-from router import classify_with_confidence
-from metrics import get_income, get_expenses, get_admin_fees
-from trend import get_trend_range
-from utils import extract_year_month
-from agent_layer import build_reasoning_model
+from src.ai_agent.router import classify_with_confidence
+from src.ai_agent.metrics import get_income, get_expenses, get_admin_fees
+from src.ai_agent.trend import get_trend_range
+from src.ai_agent.utils import extract_year_month
+from src.ai_agent.agent_layer import build_reasoning_model
 
 # Build LLM reasoning model
 reason_model = build_reasoning_model()
